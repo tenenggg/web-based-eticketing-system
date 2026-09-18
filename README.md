@@ -1,4 +1,4 @@
-# eTicketing System
+# eTicketing Support Ticketing System
 
 An internal ticketing system built with React, Express, MySQL, and Socket.IO. Users can create and track support tickets, communicate with an administrator in real time, upload supporting files, and confirm whether a problem has been solved. Administrators can review, filter, assign, update, and close tickets.
 
@@ -140,9 +140,97 @@ Copying the complete folder preserves the portable browser files and launcher ar
 
 For users on another computer, make sure the backend host is reachable on its configured port, Windows Firewall allows that port, and the frontend proxy or packaged frontend points to the correct backend address. Socket.IO and attachment URLs must use the same reachable host as the API.
 
-## Documentation
+## System Documentation
 
-Additional architecture diagrams, flowcharts, UI references, and use cases are available in `docs/`.
+The following diagrams and screenshots describe the database design, ticket workflow, user roles, and main application screens.
+
+### Entity Relationship Diagram
+
+The database stores users, tickets, and ticket conversation messages. Tickets belong to users and may be assigned to an administrator; messages belong to tickets and record text, read state, and optional attachment metadata.
+
+![eTicketing database entity relationship diagram](docs/media/architecture/ERD.jpeg)
+
+### Overall Ticket Workflow
+
+This flow shows the complete user journey: registration or login, ticket creation, administrator assignment, support questions or solutions, user confirmation, and ticket closure.
+
+![eTicketing ticket lifecycle flowchart](docs/media/flowcharts/flowchart%20overall.drawio.png)
+
+### Use-Case Diagrams
+
+#### User Use Cases
+
+Users can register and log in, view and filter their tickets, create new tickets, open ticket conversations, send messages, attach files, and confirm whether a solution resolved the issue.
+
+[Open the eTicketing user use-case diagram source in diagrams.net](docs/media/use-cases/userusecasediagram.drawio)
+
+#### Administrator Use Cases
+
+Administrators can log in, view and filter all tickets, assign tickets, update type/status/priority, ask questions, provide solutions, review conversations, and close tickets.
+
+![eTicketing administrator use-case diagram](docs/media/use-cases/adminusecasediagram.drawio.png)
+
+### User Interface Screens
+
+#### Administrator Dashboard
+
+The administrator dashboard provides a searchable, filterable ticket table with assignment, status, priority, activity, submission date, closure date, and resolution time.
+
+![eTicketing administrator dashboard](docs/media/ui/admin1.png)
+
+#### Administrator Ticket Workspace
+
+The administrator workspace displays ticket details, customer information, workflow controls, response options, and the complete conversation thread.
+
+![eTicketing administrator ticket workspace](docs/media/ui/admin2.png)
+
+#### Administrator Closed Ticket Workspace
+
+After the user confirms that the issue is solved, the administrator workspace shows the closed status, resolution time, completed conversation, and the notice that no further responses can be sent.
+
+![eTicketing administrator closed ticket workspace](docs/media/ui/admin3.png)
+
+#### User Ticket List
+
+The user dashboard lists the user's tickets with search, status and activity filters, ticket status, priority, and assigned administrator information.
+
+![eTicketing user ticket list](docs/media/ui/user1.png)
+
+#### User Ticket Conversation
+
+The user workspace shows the selected ticket, support responses, resolution prompts, and the controls used to confirm a solution or report that the issue remains unresolved.
+
+![eTicketing user ticket conversation](docs/media/ui/user2.png)
+
+#### User Resolution Response
+
+When support requests confirmation, the user can submit a solved or not-solved response from the conversation view.
+
+![eTicketing user resolution response](docs/media/ui/user3.png)
+
+#### User Support Reply
+
+When an administrator asks a question, the user can provide a complete reply and optionally attach a supported file.
+
+![eTicketing user support reply](docs/media/ui/user4.png)
+
+#### User Closed Ticket View
+
+The closed-ticket view shows the completed resolution response and informs the user that a new ticket must be opened for additional help.
+
+![eTicketing user closed ticket view](docs/media/ui/user5.png)
+
+#### PDF Conversation Log
+
+Administrators can download a formatted PDF log containing ticket details and the conversation transcript for record keeping.
+
+![eTicketing PDF conversation log](docs/media/ui/printlog.png)
+
+#### Completed PDF Conversation Log
+
+The completed log includes the closed status, assigned administrator, time taken to resolve the ticket, closure timestamp, and the full conversation transcript.
+
+![eTicketing completed PDF conversation log](docs/media/ui/printlog2.png)
 
 ## Security Notes
 
