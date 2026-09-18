@@ -162,7 +162,9 @@ This flow shows the complete user journey: registration or login, ticket creatio
 
 Users can register and log in, view and filter their tickets, create new tickets, open ticket conversations, send messages, attach files, and confirm whether a solution resolved the issue.
 
-[Open the eTicketing user use-case diagram source in diagrams.net](docs/media/use-cases/userusecasediagram.drawio)
+![eTicketing user use-case diagram](docs/media/use-cases/userusecasediagram.drawio.png)
+
+[Open the editable eTicketing user use-case diagram in diagrams.net](docs/media/use-cases/userusecasediagram.drawio)
 
 #### Administrator Use Cases
 
