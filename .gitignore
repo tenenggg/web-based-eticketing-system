@@ -1,0 +1,32 @@
+# Dependencies
+**/node_modules/
+
+# Build artifacts
+Backend/*.exe
+frontend/dist/
+
+# Runtime uploads and local deployment bundle
+Backend/uploads/attachments/*
+!Backend/uploads/attachments/.gitkeep
+/GoogleChromePortable/
+/config.txt
+/notes.txt
+/RunApp.bat
+
+# Environment / secrets
+Backend/.env
+frontend/.env
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pm2/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

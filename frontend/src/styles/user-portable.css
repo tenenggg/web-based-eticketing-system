@@ -1,0 +1,613 @@
+/**
+ * User portable layout — change frame size in one place (see .user-layout__frame).
+ */
+
+.user-layout {
+  /* ── Change these two values to resize the whole user app frame ── */
+  --user-frame-width: 330px;
+  --user-frame-max-height: 1000px;
+
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: #070b14;
+  overflow: auto;
+}
+
+.user-layout__frame {
+  width: var(--user-frame-width);
+  height: min(var(--user-frame-max-height), calc(100vh - 2rem));
+  max-height: var(--user-frame-max-height);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  border-radius: 28px;
+  border: 2px solid var(--border);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+}
+
+.user-layout__content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Admin full viewport ── */
+.admin-layout {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-layout .dashboard-page,
+.admin-layout .workspace-page {
+  width: 100%;
+  height: 100vh;
+  min-height: 0;
+}
+
+/* User pages fill the frame (not 100vw) */
+.user-layout .dashboard-page,
+.user-layout .workspace-page {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  flex: 1;
+}
+
+.user-dashboard-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-dashboard-main {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.user-dashboard-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.user-dashboard-filters {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.user-dashboard-filters input,
+.user-dashboard-filters select {
+  width: 100%;
+  font-size: 0.8rem;
+}
+
+.user-dashboard-list {
+  /* Natural height — pagination follows immediately after cards */
+}
+
+.user-list-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 0 0.25rem;
+  margin-top: 0;
+  border-top: 1px solid var(--border);
+}
+
+.user-list-pagination .pagination-btn {
+  padding: 0.35rem 0.65rem;
+  font-size: 0.75rem;
+  min-width: auto;
+}
+
+.user-list-pagination .pagination-info {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.user-dashboard-empty {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+/* Compact header */
+.page-header--compact {
+  padding: 0.65rem 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.page-header--compact .header-left h1 {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.page-header--compact .header-right {
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.page-header--compact .identity-pill {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.3rem 0.55rem;
+}
+
+.page-header--compact .identity-role,
+.page-header--compact .identity-name {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.page-header--compact .logout-btn {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.3rem 0.55rem;
+  line-height: 1.2;
+}
+
+.btn-primary--compact {
+  padding: 0.45rem 0.75rem;
+  font-size: 0.8rem;
+}
+
+/* Ticket cards */
+.user-ticket-cards {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.user-ticket-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.user-ticket-card__main {
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem;
+  background: transparent;
+  color: inherit;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.user-ticket-card__main:hover {
+  background: var(--surface-2);
+}
+
+.user-ticket-card__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.35rem;
+}
+
+.user-ticket-card__id {
+  font-family: monospace;
+  font-weight: 600;
+}
+
+.user-ticket-card__subject {
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 0.45rem;
+  line-height: 1.3;
+}
+
+.user-ticket-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+
+.user-ticket-card__assignee {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+.user-ticket-card__edit {
+  width: 100%;
+  border-radius: 0;
+  border: none;
+  border-top: 1px solid var(--border);
+  padding: 0.45rem;
+  font-size: 0.78rem;
+}
+
+/* User workspace */
+.user-workspace-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.workspace-topbar--user {
+  padding: 0.55rem 0.65rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.user-ws-header__row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.user-ws-header__row--top {
+  gap: 0.5rem;
+}
+
+.user-ws-header__row--top .btn-back {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.4rem 0.55rem;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text-primary);
+}
+
+.user-ws-header__row--top .btn-back:hover {
+  color: var(--primary);
+  border-color: rgba(59, 130, 246, 0.45);
+  background: rgba(59, 130, 246, 0.12);
+}
+
+.user-ws-header__id {
+  margin-left: auto;
+  font-size: 0.72rem;
+}
+
+.user-ws-header__row--title {
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.user-ws-header__subject {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.25;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-ws-header__admin {
+  margin: 0;
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  line-height: 1.25;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.user-ws-header__admin-label {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.user-ws-header__admin-name {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.user-ws-header__admin-name.is-unassigned {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.topbar-context--user {
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+}
+
+.ticket-subject-title--user {
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.user-header-assignee {
+  width: 100%;
+  font-size: 0.72rem;
+  color: var(--primary);
+  text-align: right;
+  margin: 0;
+}
+
+.user-ticket-switcher {
+  padding: 0.5rem 0.65rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  flex-shrink: 0;
+}
+
+.user-ticket-switcher__label {
+  display: block;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.user-ticket-switcher__select {
+  width: 100%;
+  font-size: 0.78rem;
+}
+
+.user-ticket-switcher__status {
+  margin-top: 0.35rem;
+}
+
+.user-ticket-switcher__empty {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  padding: 0.5rem 0.65rem;
+}
+
+.user-workspace-middle {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.user-workspace-middle .chat-messages {
+  padding: 0.75rem;
+  overflow-x: hidden;
+  min-width: 0;
+}
+
+.user-workspace-middle .message {
+  max-width: 88%;
+  font-size: 0.85rem;
+  min-width: 0;
+}
+
+.user-workspace-middle .message.has-attachment {
+  max-width: 94%;
+}
+
+.user-workspace-middle .file-card {
+  min-width: 0;
+}
+
+.user-workspace-middle .file-card__preview {
+  max-height: 180px;
+}
+
+.user-workspace-middle .chat-input-area {
+  padding: 0.65rem;
+}
+
+.user-workspace-middle .chat-form input[type='text'] {
+  font-size: 0.85rem;
+  padding: 0.55rem 0.85rem;
+}
+
+.closed-banner--compact {
+  margin: 0.5rem;
+  padding: 0.65rem;
+  font-size: 0.78rem;
+}
+
+.user-layout .modal-card {
+  max-width: calc(var(--user-frame-width, 320px) - 2rem);
+  padding: 1.25rem;
+}
+
+.user-layout .toast {
+  width: calc(var(--user-frame-width, 320px) - 2rem);
+  font-size: 0.8rem;
+}
+
+/* Register flow uses the same portable frame as end-user app */
+.user-layout .auth-page--in-frame {
+  min-height: 100%;
+  height: 100%;
+  padding: 0.75rem;
+  align-items: stretch;
+}
+
+.user-layout .auth-container--compact {
+  max-width: none;
+  flex: 1;
+  padding: 1.25rem 1rem;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-layout .auth-container--compact h1 {
+  font-size: 1.15rem;
+}
+
+.user-layout .auth-container--compact p {
+  font-size: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.user-layout .auth-form {
+  gap: 0.85rem;
+}
+
+.user-layout .input-group textarea {
+  width: 100%;
+  min-height: 5rem;
+  resize: vertical;
+  background: var(--bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.75rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+
+/* User one-time answer compose */
+.user-answer-compose {
+  flex-shrink: 0;
+  padding: 0.65rem 0.75rem 0.75rem;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.user-answer-compose__hint {
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: var(--warning);
+  margin-bottom: 0.5rem;
+}
+
+.user-answer-compose .chat-form--stacked {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+
+.user-answer-compose .chat-form--stacked textarea {
+  width: 100%;
+  min-height: 6.5rem;
+  resize: vertical;
+  background: var(--bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.6rem 0.75rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+
+.user-answer-compose .chat-form-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.user-answer-compose .chat-form-actions .btn-send {
+  flex: 1;
+}
+
+.user-request-header {
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  flex-shrink: 0;
+}
+
+.user-request-header__subject {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.user-request-header__meta {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+.user-request-header__description {
+  margin-top: 0.5rem;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.user-request-header__label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.reply-wait-banner {
+  margin: 0.5rem 0.65rem 0;
+  padding: 0.55rem 0.65rem;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.resolution-feedback-banner {
+  margin: 0.5rem 0.65rem 0;
+  padding: 0.7rem 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  align-items: center;
+}
+
+.resolution-feedback-banner__text {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.resolution-feedback-banner__actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
