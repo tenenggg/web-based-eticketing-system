@@ -4,12 +4,15 @@
   import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
   import ProtectedRoute from './components/shared/ProtectedRoute.jsx';
+  import AdminRoute from './components/shared/AdminRoute.jsx';
   import Toast from './components/shared/Toast.jsx';
   import { AuthProvider } from './hooks/useAuth.jsx';
   import { ToastProvider } from './hooks/useToast.jsx';
+  import AdminLayout from './layouts/AdminLayout.jsx';
 
   import LoginPage from './pages/auth/LoginPage.jsx';
   import RegisterPage from './pages/auth/RegisterPage.jsx';
+  import AdminUsersPage from './pages/admin/AdminUsersPage.jsx';
   import RoleDashboard from './routing/RoleDashboard.jsx';                // admin vs user shell
   import RoleWorkspace from './routing/RoleWorkspace.jsx';
 
@@ -43,6 +46,17 @@
                   <ProtectedRoute> 
                     <RoleWorkspace /> 
                   </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/admin/users"
+                element={
+                  <AdminRoute>
+                    <AdminLayout>
+                      <AdminUsersPage />
+                    </AdminLayout>
+                  </AdminRoute>
                 }
               />
 

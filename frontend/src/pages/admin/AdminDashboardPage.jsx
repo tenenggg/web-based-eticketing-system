@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PageHeader from '../../components/shared/PageHeader.jsx';                       // a simple header with a title and a back button
 import Pagination from '../../components/shared/Pagination.jsx';                      // a simple pagination component (pagination for the table)
 import AdminTicketTable from '../../components/admin/AdminTicketTable.jsx';           // the table component for the admin dashboard page
@@ -59,7 +60,14 @@ export default function AdminDashboardPage() {
 
   return (
     <div className="dashboard-page admin-dashboard-page">
-      <PageHeader pageTitle="Support Request" />
+      <PageHeader
+        pageTitle="Support Request"
+        actionButton={
+          <Link to="/admin/users" className="manage-accounts-link">
+            Manage Accounts
+          </Link>
+        }
+      />
 
       <main className="dashboard-main">
         <div className="table-controls">                                  {/* search + filters row */}

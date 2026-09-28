@@ -14,18 +14,21 @@ function formatRoleLabel(role) {
 
 
 
-// Top bar with title, optional action, identity, logout
-export default function PageHeader({ pageTitle, actionButton = null, compact = false }) {
+// Top bar with title, optional back/action button, identity, logout
+export default function PageHeader({ pageTitle, actionButton = null, backButton = null, compact = false }) {
   const { currentUser, handleLogout } = useAuth();
   const roleLabel = formatRoleLabel(currentUser?.role);
 
   return (
     <header className={`page-header ${compact ? 'page-header--compact' : ''}`}>
       <div className="header-left">
-        <h1>{pageTitle}</h1>
+        <div className="header-title-group">
+          {backButton && <div className="header-back-wrap">{backButton}</div>}
+          <h1>{pageTitle}</h1>
+        </div>
       </div>
       <div className="header-right">
-        {actionButton}                                                    {/* optional page action */}
+        {actionButton}
         <div className="user-identity">
           <span className="identity-pill">
             <span className="identity-role">{roleLabel} :</span>

@@ -192,6 +192,12 @@ After the user confirms that the issue is solved, the administrator workspace sh
 
 ![eTicketing administrator closed ticket workspace](docs/media/ui/admin3.png)
 
+#### Administrator Account Management
+
+The administrator account management page lists all system accounts with role badges, sequential numbering, and CRUD controls for creating, editing, and deleting user records.
+
+![eTicketing administrator account management](docs/media/ui/admin4.png)
+
 #### User Ticket List
 
 The user dashboard lists the user's tickets with search, status and activity filters, ticket status, priority, and assigned administrator information.
